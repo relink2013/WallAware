@@ -18,6 +18,7 @@ Mostly because I am a hobbyist graphic designer, and my work isn't always work a
 2. If you want your "Clean" wallpaper to be the macOS default wallpaper, or whatever you had last set in System Preferences, then leave the "Clean" folder empty. 
 3. I highly recommend combining my script with Keyboard Maestro, its affordable, and works beautifully to trigger the WallAware scripts to make a seamless experience. I will include my Macros in the download. I have created a macro to run the script on each wake, each time wifi connects or disconnects, and created one that runs every 30min (this is just to get a fresh background every 30min, you can remove it if you want.) Lastly, I created one last macro that runs a seperate script called "Unsafe_Network.sh", I will explain this in more detail below. 
 4. Check the .sh files in a text editor, they contain their own read-me sections. 
+5. WallAware will pull images from sub folders too, so you can keep your wallpapers organized if you wish. 
 
 ## Unsafe Networks Script
 This script allows you to add new SSIDs and immediately switch to a "Clean" wallpaper. 
@@ -44,4 +45,3 @@ I would love to continue learning and get to a point where WallAware becomes com
 I would also love to create a small GUI, probably a tray indicator at first, that allows you to add/remove SSIDs, and change wallpapers forward and back manually. 
 
 I currently have no idea where to start on any of that though, so it'll likely be a while. However I do intend on continuing to use this script for the foreseeable future, and will keep it up to date and working for likely a long time to come. 
-
