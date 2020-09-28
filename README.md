@@ -21,12 +21,12 @@ Mostly because I am a hobbyist graphic designer, and my work isn't always work a
 5. WallAware will pull images from sub folders too, so you can keep your wallpapers organized if you wish. 
 
 ## Unsafe Networks Script
-This script allows you to add new SSIDs and immediately switch to a "Clean" wallpaper. 
+This script allows you to add new SSIDs to the SSID list and then it will automatically run the main script to switch to a clean wallpaper. 
 
 This script performs the following actions;
 1. Checks SSID and compares it to the list
-2. If it is in the list then it just sets a "Clean" wallpaper and does nothing else.
-3. If it is not in the list then it adds it to the list and sets a "Clean" wallpaper.
+2. If it is in the list then it just runs wallaware.sh and does nothing else.
+3. If it is not in the list then it adds it to the list and then runs wallaware.sh .
 
 I personally keep this script in a hotkey macro in Keyboard Maestro, so if need be it only a key combo away at any time.  
 
