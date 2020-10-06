@@ -1,3 +1,0 @@
-macpro
-Tnet
-STiNet
