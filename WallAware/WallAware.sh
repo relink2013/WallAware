@@ -14,8 +14,8 @@
 
 
 SSID=$(networksetup -getairportnetwork en0 | sed -E 's,^Current Wi-Fi Network: (.+)$,\1,')
-CLEAN=$(find -E ~/WallAware/Clean -type f -regex ".*\.(jpg|gif|png|jpeg)" \( -atime +1 -o -mtime -1 \) | ~/WallAware/gshuf -n 1)
-DIRTY=$(find -E ~/WallAware/Dirty -type f -regex ".*\.(jpg|gif|png|jpeg)" \( -atime +1 -o -mtime -1 \) | ~/WallAware/gshuf -n 1)
+CLEAN=$(find -E -L ~/WallAware/Clean -type f -regex ".*\.(jpg|gif|png|jpeg)" \( -atime +1 -o -mtime -1 \) | ~/WallAware/gshuf -n 1)
+DIRTY=$(find -E -L ~/WallAware/Dirty -type f -regex ".*\.(jpg|gif|png|jpeg)" \( -atime +1 -o -mtime -1 \) | ~/WallAware/gshuf -n 1)
 
 
 
