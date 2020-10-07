@@ -18,7 +18,8 @@ Mostly because I am a hobbyist graphic designer, and my work isn't always work a
 2. If you want your "A" wallpaper to be the macOS default wallpaper, or whatever you had last set in System Preferences, then leave the "A" folder empty. 
 3. I highly recommend combining my script with Keyboard Maestro, its affordable, and works beautifully to trigger the WallAware scripts to make a seamless experience. I will include my Macros in the download. I have created a macro to run the script on each wake, each time wifi connects or disconnects, and created one that runs every 30min (this is just to get a fresh background every 30min, you can remove it if you want.) Lastly, I created one last macro that runs a seperate script called "Unsafe_Network.sh", I will explain this in more detail below. 
 4. Check the .sh files in a text editor, they contain their own read-me sections. 
-5. WallAware will pull images from sub folders too, so you can keep your wallpapers organized if you wish. 
+5. WallAware will pull images from sub folders too, so you can keep your wallpapers organized if you wish. It will also follow symlinks now too! 
+6. Check the top of the WallAware.sh file for new user changeable options.
 
 ## Unsafe Networks Script
 This script allows you to add new SSIDs to the SSID list and then it will automatically run the main script to switch to a A wallpaper. 
@@ -34,8 +35,11 @@ I personally keep this script in a hotkey macro in Keyboard Maestro, so if need 
 **GSHUF**
 I included the `gshuf` command from the `coreutils` package, my script references the included version. This was done so anyone who wants to use this doesn't have to install Homebrew, and the coreutils package. Hopefully it was ok for me to include this, if not I will change it. 
 
+**GAWK**
+Just like `gshuf` this command is required but I included it so that users dont have to install even more homebrew packages. 
+
 **RANDOMNESS**
-I had a hard time finding a way to randomize the images without getting a lot of repeats. Everything I Googled involved a solution that was way over my head. So I ended up using the `touch` command to update the file access time, and then told the script to prioritize files with an access time over 1 day, OR a modified time of less than 1. This should ensure that you never repeat the same wallpaper more than once a day, and that new images will initially get a small priority. 
+I had a hard time finding a way to randomize the images without getting a lot of repeats. Everything I Googled involved a solution that was way over my head. So I ended up using the `touch` command to update the file access time, ~~and then told the script to prioritize files with an access time over 1 day, OR a modified time of less than 1. This should ensure that you never repeat the same wallpaper more than once a day, and that new images will initially get a small priority.~~ Yah, that didnt work at all, it ended up creating a situation where new wallpapers never get introduced into the rotation. The process now checks to see if there are any new wallpapers first and will show them first, it will then check to see if there are any older than a set number of days (this can be changed by the user), the hope for this is to prevent seeing the same wallpaper too often but to always get new wallpapers into rotation. Finally if both of the above return no result then a wallpaper will just be chosen at random. 
 
 **THE FUTURE**
 As I said before I'm not a programmer, and I likely never will be professionally. I did however really enjoy creating this, it was a lot of fun getting create something myself that was actually useful. 
