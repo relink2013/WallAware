@@ -13,14 +13,45 @@
 # macOS for the A status...or vise versa I suppose.
 
 
+###OPTIONS###
+#Path to the A folder
+ADir=$(echo ~/WallAware/A)
+#Path to the B folder
+BDir=$(echo ~/WallAware/B)
+#How long to wait before seeing the same wallpaper again? (In days)
+Age=$(echo 14)
+
+
+
+
+###DO NOT EDIT BELOW THIS LINE###
+
+#Gets the currnt SSID
 SSID=$(networksetup -getairportnetwork en0 | sed -E 's,^Current Wi-Fi Network: (.+)$,\1,')
-A=$(find -E -L ~/WallAware/A -type f -regex ".*\.(jpg|gif|png|jpeg)" \( -atime +5 -o -mtime -1 \) | ~/WallAware/gshuf -n 1)
-B=$(find -E -L ~/WallAware/B -type f -regex ".*\.(jpg|gif|png|jpeg)" \( -atime +5 -o -mtime -1 \) | ~/WallAware/gshuf -n 1)
 
-
-
+#Check SSID against predefined List
 if grep -Fxq "$SSID" ~/WallAware/SSIDS.txt
+
 then
+  my_find() {
+      find -E -L "$ADir" -type f '(' -false $(for ext in png jpg gif jpeg; do echo "-o -name *.$ext"; done) ')' "$@"
+  }
+
+  if my_find -print0  | xargs -0 stat -f "%N %B %m" |
+  ~/WallAware/gawk '$NF==$(NF-1) {NF=NF-2; print}' | head -1 | grep .;
+
+  then
+      B=$(my_find -print0  | xargs -0 stat -f "%N %B %m" |
+      ~/Wallaware/gawk '$NF==$(NF-1) {NF=NF-2; print}' | head -1)
+
+  elif find -L -E "$ADir" -type f -mtime +"$Age" -regex ".*\.(jpg|gif|png|jpeg)" | ~/WallAware/gshuf -n 1 | grep .;
+
+  then
+      B=$(find -L -E "$ADir" -type f -mtime +"$Age" -regex ".*\.(jpg|gif|png|jpeg)" | ~/WallAware/gshuf -n 1)
+
+  else
+      B=$(find -L -E "$ADir" -type f -regex ".*\.(jpg|gif|png|jpeg)" | ~/WallAware/gshuf -n 1)
+  fi
     echo
     echo --------------------------------
     echo NETWORK=$SSID
@@ -34,6 +65,25 @@ then
 else
     if grep -q "You are not associated with an AirPort network" <<< "$SSID";
     then
+      my_find() {
+          find -E -L "$ADir" -type f '(' -false $(for ext in png jpg gif jpeg; do echo "-o -name *.$ext"; done) ')' "$@"
+      }
+
+      if my_find -print0  | xargs -0 stat -f "%N %B %m" |
+      ~/WallAware/gawk '$NF==$(NF-1) {NF=NF-2; print}' | head -1 | grep .;
+
+      then
+          B=$(my_find -print0  | xargs -0 stat -f "%N %B %m" |
+          ~/Wallaware/gawk '$NF==$(NF-1) {NF=NF-2; print}' | head -1)
+
+      elif find -L -E "$ADir" -type f -mtime +"$Age" -regex ".*\.(jpg|gif|png|jpeg)" | ~/WallAware/gshuf -n 1 | grep .;
+
+      then
+          B=$(find -L -E "$ADir" -type f -mtime +"$Age" -regex ".*\.(jpg|gif|png|jpeg)" | ~/WallAware/gshuf -n 1)
+
+      else
+          B=$(find -L -E "$ADir" -type f -regex ".*\.(jpg|gif|png|jpeg)" | ~/WallAware/gshuf -n 1)
+      fi
         echo
         echo --------------------------------
         echo NETWORK=WIFI IS NOT CONNECTED OR IS DISABLED
@@ -45,6 +95,25 @@ else
         echo --------------------------------
         echo
     else
+      my_find() {
+          find -E -L "$BDir" -type f '(' -false $(for ext in png jpg gif jpeg; do echo "-o -name *.$ext"; done) ')' "$@"
+      }
+
+      if my_find -print0  | xargs -0 stat -f "%N %B %m" |
+      ~/WallAware/gawk '$NF==$(NF-1) {NF=NF-2; print}' | head -1 | grep .;
+
+      then
+          B=$(my_find -print0  | xargs -0 stat -f "%N %B %m" |
+          ~/Wallaware/gawk '$NF==$(NF-1) {NF=NF-2; print}' | head -1)
+
+      elif find -L -E "$BDir" -type f -mtime +"$Age" -regex ".*\.(jpg|gif|png|jpeg)" | ~/WallAware/gshuf -n 1 | grep .;
+
+      then
+          B=$(find -L -E "$BDir" -type f -mtime +"$Age" -regex ".*\.(jpg|gif|png|jpeg)" | ~/WallAware/gshuf -n 1)
+
+      else
+          B=$(find -L -E "$BDir" -type f -regex ".*\.(jpg|gif|png|jpeg)" | ~/WallAware/gshuf -n 1)
+      fi
         echo
         echo --------------------------------
         echo NETWORK=$SSID
