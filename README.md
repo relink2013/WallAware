@@ -17,9 +17,10 @@ Mostly because I am a hobbyist graphic designer, and my work isn't always work a
 1. Make sure the WallAware folder is in your users home folder, this is where the scripts expect everything to be. 
 2. If you want your "A" wallpaper to be the macOS default wallpaper, or whatever you had last set in System Preferences, then leave the "A" folder empty. 
 3. I highly recommend combining my script with Keyboard Maestro, its affordable, and works beautifully to trigger the WallAware scripts to make a seamless experience. I will include my Macros in the download. I have created a macro to run the script on each wake, each time wifi connects or disconnects, and created one that runs every 30min (this is just to get a fresh background every 30min, you can remove it if you want.) Lastly, I created one last macro that runs a seperate script called `Add_Network.sh`, I will explain this in more detail below. 
-4. Check the .sh files in a text editor, they contain their own read-me sections. 
+4. Check the .sh files in a text editor, they contain their own read-me sections and options. 
 5. WallAware will pull images from sub folders too, so you can keep your wallpapers organized if you wish. It will also follow symlinks now too! 
 6. Check the top of the WallAware.sh file for new user changeable options.
+7. I highly reccomend using the BitBar plugin, it adds many common commands along with the current status to a simple menubar app.
 
 ## Add Networks Script
 This script allows you to add new SSIDs to the SSID list and then it will automatically run the main script to switch to a A wallpaper. 
