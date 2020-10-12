@@ -13,12 +13,15 @@
 # macOS for the A status...or vise versa I suppose.
 
 
-###OPTIONS###
+###OPTIONS###SWITCH TO ALT VARIABLES TO USE CONFIG FILE###
 #Path to the A folder
+#ADir=$(sed -n 1p ~/WallAware/config | sed 's/^.*=//')
 ADir=$(echo ~/WallAware/A)
 #Path to the B folder
+#BDir=$(sed -n 2p ~/WallAware/config | sed 's/^.*=//')
 BDir=$(echo ~/WallAware/B)
 #How long to wait before seeing the same wallpaper again? (In days)
+#Age=$(sed -n 3p ~/WallAware/config | sed 's/[^0-9]//g')
 Age=$(echo 14)
 
 
