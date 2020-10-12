@@ -32,12 +32,17 @@ This script performs the following actions;
 
 I personally keep this script in a hotkey macro in Keyboard Maestro, so if need be it only a key combo away at any time.  
 
-## Additional Info
-**GSHUF**
-I included the `gshuf` command from the `coreutils` package, my script references the included version. This was done so anyone who wants to use this doesn't have to install Homebrew, and the coreutils package.
+## Remove Networks Script
+This script allows you to remove the current SSID from the list, it will then automatically run the main script switching you to a B wallaper. 
 
-**GAWK**
-Just like `gshuf`, `gawk` is required so I included it so that users dont have to install even more homebrew packages. 
+This script performs the following actions;
+1. Checks SSID and compares it to the list
+2. If it is not in the list then it does nothing.
+3. If it is is in the list then it removes it from the list and then runs `wallaware.sh`.
+
+I personally run this script from the BitBar menu wehen needed. 
+
+## Additional Info
 
 **RANDOMNESS**
 I had a hard time finding a way to randomize the images without getting a lot of repeats. Everything I Googled involved a solution that was way over my head. So I ended up using the `touch` command to update the file access time, ~~and then told the script to prioritize files with an access time over 1 day, OR a modified time of less than 1. This should ensure that you never repeat the same wallpaper more than once a day, and that new images will initially get a small priority.~~ 
