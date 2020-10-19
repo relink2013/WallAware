@@ -1,0 +1,34 @@
+#!/bin/bash
+
+# This Script will add the current SSID to the SSIDS file and
+# then runs the main WallAware script. If the SSID is already added
+# the main WallAware script is ran.
+
+SSID=$(networksetup -getairportnetwork en0 | sed -E 's,^Current Wi-Fi Network: (.+)$,\1,')
+
+if grep -Fxq "$SSID" ~/WallAware/SSIDS.txt
+then
+
+    echo
+    echo --------------------------------
+    echo "$SSID" HAS BEEN REMOVED. PICKING FROM FOLDER B
+    echo --------------------------------
+    echo
+
+    sed -i '' 's/'$SSID'//g' ~/WallAware/SSIDS.txt
+    sed -i '' '/^[[:space:]]*$/d' ~/WallAware/SSIDS.txt
+
+    sh ~/WallAware/WallAware.sh
+else
+    networksetup -getairportnetwork en0 | sed -E 's,^Current Wi-Fi Network: (.+)$,\1,' >> ~/WallAware/SSIDS.txt
+
+    echo
+    echo --------------------------------
+    echo "$SSID" HAS BEEN ADDED. PICKING FROM FOLDER A
+    echo --------------------------------
+    echo
+
+    sh ~/WallAware/WallAware.sh
+fi
+
+exit 0;
