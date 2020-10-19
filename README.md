@@ -1,7 +1,6 @@
-# WallAware
-WiFi aware wallpaper changer for macOS. This was created to run on macOS and does contain bits of AppleScript. So out of the box it will not run on Linux. 
 
-However, im sure it would take about 5min of googling to adapt it to your desktop environment and have it working fine. 
+# WallAware
+WiFi aware wallpaper changer for macOS. 
 ## History
 So I'm going to start-out right off the bat by saying I am not a programmer in any sense of the word. I wanted a program that didn't exist so I created it in the most rudimentary way possible. 
 ## What does WallAware Do?
@@ -13,47 +12,65 @@ Simple, WallAware by itself will;
 ## Why?
 Mostly because I am a hobbyist graphic designer, and my work isn't always work appropriate. I however use my personal Mac Book Pro at work every day, and don't want to manually change my wallpaper twice a day. 
 
-# Getting the most out of WallAware.
-1. Make sure the WallAware folder is in your users home folder, this is where the scripts expect everything to be. 
-2. If you want your "A" wallpaper to be the macOS default wallpaper, or whatever you had last set in System Preferences, then leave the "A" folder empty. 
-3. I highly recommend combining my script with Keyboard Maestro, its affordable, and works beautifully to trigger the WallAware scripts to make a seamless experience. I will include my Macros in the download. I have created a macro to run the script on each wake, each time wifi connects or disconnects, and created one that runs every 30min (this is just to get a fresh background every 30min, you can remove it if you want.) Lastly, I created one last macro that runs a seperate script called `Add_Network.sh`, I will explain this in more detail below. 
-4. Check the .sh files in a text editor, they contain their own read-me sections and options. 
-5. WallAware will pull images from sub folders too, so you can keep your wallpapers organized if you wish. It will also follow symlinks now too! 
-6. Check the top of the WallAware.sh file for new user changeable options.
-7. I highly reccomend using the BitBar plugin, it adds many common commands along with the current status to a simple menubar app.
+# Getting WallAware setup.
 
-## Add Networks Script
-This script allows you to add new SSIDs to the SSID list and then it will automatically run the main script to switch to a A wallpaper. 
+Wallaware is designed to be modular as to allow the end user to interact with it in their own way. The core of Wallaware is broken up into 4 main scripts that can be triggered or ran by just about anything you can think of. 
 
-This script performs the following actions;
-1. Checks SSID and compares it to the list
-2. If it is in the list then it just runs `wallaware.sh` and does nothing else.
-3. If it is not in the list then it adds it to the list and then runs `wallaware.sh` .
+**SCRIPTS:**
+1. Wallaware: This is the core of everything, this is the script that obtains the SSIDs and checks the list, then decides on which wallpaper to set. 
+2. Add_Network: This script obtains the current SSID and adds it to the list while setting a Wallpaper from "Directory A"
+3. Remove_Network: This script obtains the current SSID, and removes it from the list while setting a wallpaper from "Directory B"
+4. Toggle_Network: This essentially combines the actions of "1" and "2" into a single script that can be ran over and over to toggle a network as black listed or not. 
 
-I personally keep this script in a hotkey macro in Keyboard Maestro, so if need be it only a key combo away at any time.  
+**SETTING IT ALL UP:**
 
-## Remove Networks Script
-This script allows you to remove the current SSID from the list, it will then automatically run the main script switching you to a B wallaper. 
+**The Basics:**
+This is going to descrivbe how to setup Wallaware to match my personal setup, and how I intended it to run. However, this is just a collection of shell scripts, you do not have to set it up exactly like mine. if there is a required step I will put it in *italics*.
 
-This script performs the following actions;
-1. Checks SSID and compares it to the list
-2. If it is not in the list then it does nothing.
-3. If it is is in the list then it removes it from the list and then runs `wallaware.sh`.
+1. *Extract the .zip file and place the "Wallaware" folder in your home directory.* 
+2. *Place your desired wallpapers in the A and B folders. (A is what is selected if an SSID is NOT listed.) You can also customize where the A and B directories pull from by changing the variables at the top of the `wallaware.sh` file.* 
 
-I personally run this script from the BitBar menu wehen needed. 
+Do note: the Wallaware folder MUST be located in your user home directory or things will not run correctly, if at all. 
 
-## Additional Info
+That's it for a basic setup, you could now execute the various scripts and see WallAware do its thing...but it doesn't do it automatically yet, lets fix that. 
 
-**RANDOMNESS**
-I had a hard time finding a way to randomize the images without getting a lot of repeats. Everything I Googled involved a solution that was way over my head. So I ended up using the `touch` command to update the file access time, ~~and then told the script to prioritize files with an access time over 1 day, OR a modified time of less than 1. This should ensure that you never repeat the same wallpaper more than once a day, and that new images will initially get a small priority.~~ 
+**Make it Automatic:**
+To trigger the scripts automatically when they are needed I prefer to use a program called "[Keyboard Maestro](https://www.keyboardmaestro.com/main/#Overview)", It is paid, but its affordable, does exactly what we need, and is incredibly reliable. 
 
-That didnt work at all, it ended up creating a situation where new wallpapers never get introduced into the rotation. The process now checks to see if there are any new wallpapers first and will show them first, it will then check to see if there are any older than a set number of days (this can be changed by the user), the hope for this is to prevent seeing the same wallpaper too often but to always get new wallpapers into rotation. Finally if both of the above return no result then a wallpaper will just be chosen at random. 
+I have included a file called `WallAware  Macros.kmmacros` this is an export of my macros I use for Wallaware. Just import that file into your Keyboard Maestro program by double clicking it. 
 
-**THE FUTURE**
-As I said before I'm not a programmer, and I likely never will be professionally. I did however really enjoy creating this, it was a lot of fun getting create something myself that was actually useful. 
+Here is what the various macros do:
+1. On Wake: This macros is disabled my default. But if enabled it will trigger the main script to run when the screen wakes from sleep. 
+2. Timer: This runs the main script on a set timer. it serves no purpose other than to periodically change the wallpaper. if you do not want your wallpaper to change every so often then disable this one. 
+3. ToggleNetwork: This one is more important, it is assigned to `Control Option Command Space` and it will immediately run `Toggle_Network`. This allows you to quickly black list or whitelist an SSID on demand. 
+4. WiFi Connect: Runs the main script when WiFi is connected, this is considered a "core function". 
+5. WiFi Disconnect: Runs the main script when WiFi is disconnected, this is also considered a "core function". 
 
-I would love to continue learning and get to a point where WallAware becomes completely self contained, so no more Keyboard Maestro required. 
+Macros "4" and "5" are essentially the whole point of Wallaware, however you can customize any of this to your liking. 
 
-I would also love to create a small GUI, probably a tray indicator at first, that allows you to add/remove SSIDs, and change wallpapers forward and back manually. 
+**Give it a nice simple GUI:**
+This is one of my favorite additions, a [Bitbar](https://github.com/matryer/bitbar) plugin. Bitbar is a fantastic free utility to add scripts to your macOS menu bar very easily. This allows Wallaware to have a nice simple UI. 
 
-I currently have no idea where to start on any of that though, so it'll likely be a while. However I do intend on continuing to use this script for the foreseeable future, and will keep it up to date and working for likely a long time to come. 
+The Wallaware plugin allows you to:
+1. See the current SSID
+2. Change to the next wallpaper on demand
+3. Add the current SSID to the list.
+4. Remove the current SSID from the list. 
+
+To install is simple, just install and run Bitbar, then change your plugin directory to the Bitbar folder contained inside the Wallaware folder. 
+
+If you already run Bitbar, then just copy my script from the Bitbar folder and place it where ever you'd like. 
+
+**Put your Touchbar to good use:**
+This one was more of  a "because i can" kind of thing, but it has proven useful. 
+
+First you must install [Better Touch Tool](https://folivora.ai/), again its paid but affordable and is reliable. Once installed double click on the `WallAware.bttpreset` file to install the macros. That should be it.
+
+What does it do?
+
+1. Toggle SSID list status
+2. Change to next wallpaper on demand.
+
+It uses the same hot key combo and Keyboard Maestro minus the spacebar. 
+
+So you hold `control option command` and youll see 2 Wallaware icons apear on your touch bar `toggle` and `next`. 
