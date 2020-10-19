@@ -1,1 +1,7 @@
-#SSIDS
+macpro
+Tnet
+Chris’ iPhone
+STI Guest
+SpectrumWiFi
+CableWiFi
+STiNet
