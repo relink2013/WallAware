@@ -14,6 +14,117 @@
 				<array>
 					<dict>
 						<key>DisplayKind</key>
+						<string>Window</string>
+						<key>HonourFailureSettings</key>
+						<true/>
+						<key>IncludeStdErr</key>
+						<false/>
+						<key>MacroActionType</key>
+						<string>ExecuteShellScript</string>
+						<key>Path</key>
+						<string></string>
+						<key>Source</key>
+						<string>Nothing</string>
+						<key>Text</key>
+						<string>open "bitbar://refreshPlugin?name=wallaware-bitbar.sh"</string>
+						<key>TimeOutAbortsMacro</key>
+						<true/>
+						<key>TrimResults</key>
+						<true/>
+						<key>TrimResultsNew</key>
+						<true/>
+						<key>UseText</key>
+						<true/>
+					</dict>
+					<dict>
+						<key>DisplayKind</key>
+						<string>None</string>
+						<key>HonourFailureSettings</key>
+						<true/>
+						<key>IncludeStdErr</key>
+						<false/>
+						<key>MacroActionType</key>
+						<string>ExecuteShellScript</string>
+						<key>Path</key>
+						<string>~/WallAware/WallAware.sh</string>
+						<key>Source</key>
+						<string>Nothing</string>
+						<key>Text</key>
+						<string></string>
+						<key>TimeOutAbortsMacro</key>
+						<true/>
+						<key>TrimResults</key>
+						<true/>
+						<key>TrimResultsNew</key>
+						<true/>
+						<key>UseText</key>
+						<false/>
+					</dict>
+				</array>
+				<key>CreationDate</key>
+				<real>622733721.19872606</real>
+				<key>ModificationDate</key>
+				<real>624890902.09422195</real>
+				<key>Name</key>
+				<string>WiFi Connect</string>
+				<key>Triggers</key>
+				<array>
+					<dict>
+						<key>Connected</key>
+						<true/>
+						<key>MacroTriggerType</key>
+						<string>WirelessNetwork</string>
+						<key>MatchType</key>
+						<string>Any</string>
+					</dict>
+				</array>
+				<key>UID</key>
+				<string>61876F12-7996-4597-BDAC-3E0238F7B162</string>
+			</dict>
+		</array>
+		<key>Name</key>
+		<string>WallAware </string>
+		<key>ToggleMacroUID</key>
+		<string>6E6903AC-6597-43D7-B302-A191B2B00E41</string>
+		<key>UID</key>
+		<string>1E53131B-23D1-423E-9DA1-6D15FEA2A25D</string>
+	</dict>
+	<dict>
+		<key>Activate</key>
+		<string>Normal</string>
+		<key>CreationDate</key>
+		<real>622680393.78451097</real>
+		<key>Macros</key>
+		<array>
+			<dict>
+				<key>Actions</key>
+				<array>
+					<dict>
+						<key>DisplayKind</key>
+						<string>Window</string>
+						<key>HonourFailureSettings</key>
+						<true/>
+						<key>IncludeStdErr</key>
+						<false/>
+						<key>MacroActionType</key>
+						<string>ExecuteShellScript</string>
+						<key>Path</key>
+						<string></string>
+						<key>Source</key>
+						<string>Nothing</string>
+						<key>Text</key>
+						<string>open "bitbar://refreshPlugin?name=wallaware-bitbar.sh"</string>
+						<key>TimeOutAbortsMacro</key>
+						<true/>
+						<key>TrimResults</key>
+						<true/>
+						<key>TrimResultsNew</key>
+						<true/>
+						<key>UseText</key>
+						<true/>
+					</dict>
+					<dict>
+						<key>DisplayKind</key>
 						<string>None</string>
 						<key>HonourFailureSettings</key>
 						<true/>
@@ -40,7 +151,7 @@
 				<key>CreationDate</key>
 				<real>622733864.03838396</real>
 				<key>ModificationDate</key>
-				<real>622734057.02943003</real>
+				<real>624890908.22915697</real>
 				<key>Name</key>
 				<string>WiFi Disconnect</string>
 				<key>Triggers</key>
@@ -56,71 +167,6 @@
 				</array>
 				<key>UID</key>
 				<string>C9BD8B62-687C-470D-B252-25FB9DA949F1</string>
-			</dict>
-		</array>
-		<key>Name</key>
-		<string>WallAware </string>
-		<key>ToggleMacroUID</key>
-		<string>6E6903AC-6597-43D7-B302-A191B2B00E41</string>
-		<key>UID</key>
-		<string>1E53131B-23D1-423E-9DA1-6D15FEA2A25D</string>
-	</dict>
-	<dict>
-		<key>Activate</key>
-		<string>Normal</string>
-		<key>CreationDate</key>
-		<real>622680393.78451097</real>
-		<key>Macros</key>
-		<array>
-			<dict>
-				<key>Actions</key>
-				<array>
-					<dict>
-						<key>DisplayKind</key>
-						<string>None</string>
-						<key>HonourFailureSettings</key>
-						<true/>
-						<key>IncludeStdErr</key>
-						<false/>
-						<key>MacroActionType</key>
-						<string>ExecuteShellScript</string>
-						<key>Path</key>
-						<string>~/WallAware/Toggle_Network</string>
-						<key>Source</key>
-						<string>Nothing</string>
-						<key>Text</key>
-						<string></string>
-						<key>TimeOutAbortsMacro</key>
-						<true/>
-						<key>TrimResults</key>
-						<true/>
-						<key>TrimResultsNew</key>
-						<true/>
-						<key>UseText</key>
-						<false/>
-					</dict>
-				</array>
-				<key>CreationDate</key>
-				<real>622681238.31988704</real>
-				<key>ModificationDate</key>
-				<real>624287435.84261</real>
-				<key>Name</key>
-				<string>ToggleNetwork</string>
-				<key>Triggers</key>
-				<array>
-					<dict>
-						<key>FireType</key>
-						<string>Pressed</string>
-						<key>KeyCode</key>
-						<integer>49</integer>
-						<key>MacroTriggerType</key>
-						<string>HotKey</string>
-						<key>Modifiers</key>
-						<integer>6400</integer>
-					</dict>
-				</array>
-				<key>UID</key>
-				<string>F0CBE5AA-DBCA-4D2F-8713-331138DA211A</string>
 			</dict>
 		</array>
 		<key>Name</key>
@@ -211,7 +257,7 @@
 						<key>MacroActionType</key>
 						<string>ExecuteShellScript</string>
 						<key>Path</key>
-						<string>~/WallAware/WallAware.sh</string>
+						<string>~/WallAware/Toggle_Network</string>
 						<key>Source</key>
 						<string>Nothing</string>
 						<key>Text</key>
@@ -227,24 +273,26 @@
 					</dict>
 				</array>
 				<key>CreationDate</key>
-				<real>622733721.19872606</real>
+				<real>622681238.31988704</real>
 				<key>ModificationDate</key>
-				<real>622734053.03711796</real>
+				<real>624287435.84261</real>
 				<key>Name</key>
-				<string>WiFi Connect</string>
+				<string>ToggleNetwork</string>
 				<key>Triggers</key>
 				<array>
 					<dict>
-						<key>Connected</key>
-						<true/>
+						<key>FireType</key>
+						<string>Pressed</string>
+						<key>KeyCode</key>
+						<integer>49</integer>
 						<key>MacroTriggerType</key>
-						<string>WirelessNetwork</string>
-						<key>MatchType</key>
-						<string>Any</string>
+						<string>HotKey</string>
+						<key>Modifiers</key>
+						<integer>6400</integer>
 					</dict>
 				</array>
 				<key>UID</key>
-				<string>61876F12-7996-4597-BDAC-3E0238F7B162</string>
+				<string>F0CBE5AA-DBCA-4D2F-8713-331138DA211A</string>
 			</dict>
 		</array>
 		<key>Name</key>
@@ -264,6 +312,30 @@
 			<dict>
 				<key>Actions</key>
 				<array>
+					<dict>
+						<key>DisplayKind</key>
+						<string>Window</string>
+						<key>HonourFailureSettings</key>
+						<true/>
+						<key>IncludeStdErr</key>
+						<false/>
+						<key>MacroActionType</key>
+						<string>ExecuteShellScript</string>
+						<key>Path</key>
+						<string></string>
+						<key>Source</key>
+						<string>Nothing</string>
+						<key>Text</key>
+						<string>open "bitbar://refreshPlugin?name=wallaware-bitbar.sh"</string>
+						<key>TimeOutAbortsMacro</key>
+						<true/>
+						<key>TrimResults</key>
+						<true/>
+						<key>TrimResultsNew</key>
+						<true/>
+						<key>UseText</key>
+						<true/>
+					</dict>
 					<dict>
 						<key>DisplayKind</key>
 						<string>None</string>
@@ -291,10 +363,8 @@
 				</array>
 				<key>CreationDate</key>
 				<real>622680406.24866498</real>
-				<key>IsActive</key>
-				<false/>
 				<key>ModificationDate</key>
-				<real>624136119.01627195</real>
+				<real>624890911.45384896</real>
 				<key>Name</key>
 				<string>On Wake</string>
 				<key>Triggers</key>
