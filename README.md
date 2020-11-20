@@ -1,3 +1,5 @@
+# Big Sur
+Im Happy to say that all of the WallAware scripts, and its dependant applications, Keyboard Maestro, BitBar, and Better Touch Tool all work just fine on Big Sur. 
 
 # WallAware
 WiFi aware wallpaper changer for macOS. 
